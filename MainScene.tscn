@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://MainMode.gd" type="Script" id=2]
+[ext_resource path="res://BoxPhysMat.tres" type="PhysicsMaterial" id=3]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.8
+absorbent = true
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="Environment" id=4]
+ambient_light_color = Color( 0.713726, 0.917647, 0.847059, 1 )
+ambient_light_energy = 0.05
+ambient_light_sky_contribution = 0.0
+
+[node name="Root" type="Spatial"]
+script = ExtResource( 2 )
+dice_spawn_count = 3
+
+[node name="BoxGeo" type="Spatial" parent="."]
+
+[node name="Floor" type="StaticBody" parent="BoxGeo"]
+transform = Transform( 12, 0, 0, 0, 0.1, 0, 0, 0, 12, 0, 0, 0 )
+physics_material_override = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="BoxGeo/Floor"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="BoxGeo/Floor"]
+shape = SubResource( 3 )
+
+[node name="Wall1" type="StaticBody" parent="BoxGeo"]
+transform = Transform( -6.07174e-06, -0.466, 0, 8, -3.53679e-07, 0, 0, 0, 13, 12, 2.156, 0 )
+physics_material_override = ExtResource( 3 )
+
+[node name="MeshInstance1" type="MeshInstance" parent="BoxGeo/Wall1"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape1" type="CollisionShape" parent="BoxGeo/Wall1"]
+shape = SubResource( 3 )
+
+[node name="Wall2" type="StaticBody" parent="BoxGeo"]
+transform = Transform( -6.07174e-06, -0.466, 0, 8, -3.53679e-07, 0, 0, 0, 13, -12, 2.156, 0 )
+physics_material_override = ExtResource( 3 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="BoxGeo/Wall2"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="BoxGeo/Wall2"]
+shape = SubResource( 3 )
+
+[node name="Wall3" type="StaticBody" parent="BoxGeo"]
+transform = Transform( 2.12345e-13, 7.5921e-08, 13, 8, -7.5921e-08, -7.22835e-20, 1.30337e-06, 0.466, -2.11797e-06, 0, 2.156, -12 )
+physics_material_override = ExtResource( 3 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="BoxGeo/Wall3"]
+transform = Transform( 1, 0, -3.38813e-21, 0, 1, 0, -1.69407e-21, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="BoxGeo/Wall3"]
+transform = Transform( 1, -8.88178e-16, -1.35525e-20, 0, 1, -4.54747e-13, -5.0822e-21, -4.44089e-16, 1, 0.00790858, -0.0941639, 0.000595093 )
+shape = SubResource( 3 )
+
+[node name="Wall4" type="StaticBody" parent="BoxGeo"]
+transform = Transform( 2.12345e-13, 7.5921e-08, 13, 8, -7.5921e-08, -7.22835e-20, 1.30337e-06, 0.466, -2.11797e-06, 0, 2.156, 12 )
+physics_material_override = ExtResource( 3 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="BoxGeo/Wall4"]
+transform = Transform( 1, 0, -1.01644e-20, 0, 1, 0, -5.0822e-21, -4.44089e-16, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape4" type="CollisionShape" parent="BoxGeo/Wall4"]
+shape = SubResource( 3 )
+
+[node name="TODO add invis ceiling" type="Node" parent="."]
+
+[node name="DiceSpawnLoc" type="Position3D" parent="."]
+transform = Transform( 0.910842, 0, -0.412755, -0.397346, 0.270684, -0.876839, 0.111726, 0.962668, 0.246551, 0, 9.61425, 0 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 24.6999, 0 )
+fov = 80.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.3957, 0 )
+light_color = Color( 0.976471, 0.945098, 0.921569, 1 )
+light_energy = 2.0
+omni_range = 26.0
