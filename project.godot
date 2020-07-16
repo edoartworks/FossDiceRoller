@@ -16,8 +16,16 @@ _global_script_class_icons={
 [application]
 
 config/name="FossDiceRoller"
+config/description="A free open source dice roller app"
 run/main_scene="res://MainScene.tscn"
+boot_splash/fullsize=false
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
+
+[display]
+
+window/size/width=600
+window/size/always_on_top=true
 
 [rendering]
 
